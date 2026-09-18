@@ -2,6 +2,24 @@ import { useEffect, useState } from "react";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import AdSlot from "../components/AdSlot";
+import {
+  IconYouTube,
+  IconInstagram,
+  IconFacebook,
+  IconX,
+  IconTikTok,
+  IconLink,
+  IconClipboard,
+  IconDownload,
+  IconShield,
+  IconZap,
+  IconGlobe,
+  IconLock,
+  IconMusic,
+  IconFilm,
+  IconClose,
+  IconUser,
+} from "../components/Icons";
 
 const API_BASE = "http://localhost:5050";
 const HISTORY_KEY = "vdl_history";
@@ -36,36 +54,36 @@ function saveToHistory(entry) {
 }
 
 const PLATFORMS = [
-  { name: "YouTube", emoji: "▶️" },
-  { name: "Instagram", emoji: "📷" },
-  { name: "Facebook", emoji: "👍" },
-  { name: "Twitter / X", emoji: "🐦" },
-  { name: "TikTok", emoji: "🎵" },
+  { name: "YouTube", Icon: IconYouTube },
+  { name: "Instagram", Icon: IconInstagram },
+  { name: "Facebook", Icon: IconFacebook },
+  { name: "X (Twitter)", Icon: IconX },
+  { name: "TikTok", Icon: IconTikTok },
 ];
 
 const STEPS = [
   {
     title: "Copy the video link",
     detail: "Open the Facebook, Instagram, YouTube or TikTok post and tap Share → Copy Link.",
-    icon: "🔗",
+    Icon: IconLink,
   },
   {
     title: "Paste it above",
     detail: "Paste the link into the box and hit Download to fetch available qualities.",
-    icon: "📋",
+    Icon: IconClipboard,
   },
   {
     title: "Choose a quality & save",
     detail: "Pick your preferred resolution or audio-only option and the file downloads instantly.",
-    icon: "⬇️",
+    Icon: IconDownload,
   },
 ];
 
 const FEATURES = [
-  { title: "Completely Free", detail: "No hidden fees, no subscriptions.", icon: "💸" },
-  { title: "No Sign-up", detail: "Paste a link and go — no account needed.", icon: "🚫" },
-  { title: "HD Quality", detail: "Download in the best available resolution.", icon: "✨" },
-  { title: "Multi-Platform", detail: "Works with Facebook, Instagram, YouTube, TikTok & X.", icon: "🌐" },
+  { title: "Completely Free", detail: "No hidden fees, no subscriptions, ever.", Icon: IconShield },
+  { title: "No Sign-up", detail: "Paste a link and go — no account needed.", Icon: IconLock },
+  { title: "HD Quality", detail: "Download in the best available resolution.", Icon: IconZap },
+  { title: "Multi-Platform", detail: "Works with Facebook, Instagram, YouTube, TikTok & X.", Icon: IconGlobe },
 ];
 
 const FAQS = [
@@ -205,16 +223,21 @@ function Home() {
       <header className="topbar">
         <SiteHeader />
         <div className="hero-inner">
-          <div className="badge">Fast · Free · No sign-up</div>
+          <div className="badge">
+            <span className="badge-dot" /> Fast &nbsp;·&nbsp; Free &nbsp;·&nbsp; No sign-up
+          </div>
           <h1>
-            <span className="logo-dot">▶</span> Video Downloader
+            <span className="logo-dot">
+              <IconFilm />
+            </span>
+            Video Downloader
           </h1>
-          <p>Paste a video link from Facebook, Instagram, YouTube, X, TikTok &amp; more</p>
+          <p>Save videos from Facebook, Instagram, YouTube, X and TikTok in one click</p>
 
           <div className="platforms">
             {PLATFORMS.map((p) => (
               <span className="platform-chip" key={p.name}>
-                <span aria-hidden="true">{p.emoji}</span> {p.name}
+                <p.Icon className="platform-chip-icon" aria-hidden="true" /> {p.name}
               </span>
             ))}
           </div>
@@ -238,21 +261,30 @@ function Home() {
                 aria-label="Clear input"
                 title="Clear"
               >
-                ✕
+                <IconClose />
               </button>
             )}
           </div>
           <button type="button" className="paste-btn" onClick={handlePaste} title="Paste from clipboard">
-            📋 Paste
+            <IconClipboard className="btn-icon" /> Paste
           </button>
           <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? <span className="spinner" aria-hidden="true" /> : "Download"}
+            {loading ? (
+              <span className="spinner" aria-hidden="true" />
+            ) : (
+              <>
+                <IconDownload className="btn-icon" /> Download
+              </>
+            )}
           </button>
         </form>
 
         {error && (
           <div className="error">
-            <span aria-hidden="true">⚠️</span> {error}
+            <span className="error-icon" aria-hidden="true">
+              !
+            </span>{" "}
+            {error}
           </div>
         )}
 
@@ -279,8 +311,16 @@ function Home() {
               <div className="meta">
                 <h2>{video.title || "Untitled video"}</h2>
                 <div className="meta-row">
-                  {video.uploader && <span className="chip">👤 {video.uploader}</span>}
-                  {video.extractor && <span className="chip chip-accent">🔗 {video.extractor}</span>}
+                  {video.uploader && (
+                    <span className="chip">
+                      <IconUser className="chip-icon" /> {video.uploader}
+                    </span>
+                  )}
+                  {video.extractor && (
+                    <span className="chip chip-accent">
+                      <IconLink className="chip-icon" /> {video.extractor}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
@@ -292,14 +332,14 @@ function Home() {
                   className={`tab ${tab === "video" ? "active" : ""}`}
                   onClick={() => setTab("video")}
                 >
-                  🎬 Video ({videoFormats.length})
+                  <IconFilm className="tab-icon" /> Video ({videoFormats.length})
                 </button>
                 <button
                   type="button"
                   className={`tab ${tab === "audio" ? "active" : ""}`}
                   onClick={() => setTab("audio")}
                 >
-                  🎵 Audio only ({audioFormats.length})
+                  <IconMusic className="tab-icon" /> Audio only ({audioFormats.length})
                 </button>
               </div>
             )}
@@ -316,7 +356,9 @@ function Home() {
                       onClick={() => handleDownload(f.format_id, key)}
                       disabled={isBusy}
                     >
-                      <span className="format-icon">{f.hasVideo ? "🎬" : "🎵"}</span>
+                      <span className="format-icon">
+                        {f.hasVideo ? <IconFilm /> : <IconMusic />}
+                      </span>
                       <span className="format-info">
                         <strong>{f.resolution}</strong>
                         <span className="format-sub">
@@ -324,13 +366,23 @@ function Home() {
                           {f.filesize ? ` · ${formatSize(f.filesize)}` : ""}
                         </span>
                       </span>
-                      <span className="format-action">{isBusy ? "Starting…" : "⬇ Download"}</span>
+                      <span className="format-action">
+                        {isBusy ? (
+                          "Starting…"
+                        ) : (
+                          <>
+                            <IconDownload className="format-action-icon" /> Download
+                          </>
+                        )}
+                      </span>
                     </button>
                   );
                 })
               ) : (
                 <button className="format-btn" onClick={() => handleDownload(null, "best")}>
-                  <span className="format-icon">⬇</span>
+                  <span className="format-icon">
+                    <IconDownload />
+                  </span>
                   <span className="format-info">
                     <strong>Best available quality</strong>
                   </span>
@@ -360,7 +412,9 @@ function Home() {
                   {h.thumbnail ? (
                     <img src={h.thumbnail} alt="" className="history-thumb" />
                   ) : (
-                    <span className="history-thumb history-thumb-fallback">🎬</span>
+                    <span className="history-thumb history-thumb-fallback">
+                      <IconFilm />
+                    </span>
                   )}
                   <span className="history-text">
                     <span className="history-title">{h.title || h.sourceUrl}</span>
@@ -375,12 +429,15 @@ function Home() {
         <AdSlot label="Advertisement" size="banner" />
 
         <section className="content-section">
+          <span className="eyebrow">Simple process</span>
           <h2 className="section-title">How it works</h2>
           <div className="steps-grid">
             {STEPS.map((s, i) => (
               <div className="step-card" key={s.title}>
                 <span className="step-number">{i + 1}</span>
-                <span className="step-icon">{s.icon}</span>
+                <span className="step-icon">
+                  <s.Icon />
+                </span>
                 <h3>{s.title}</h3>
                 <p>{s.detail}</p>
               </div>
@@ -389,11 +446,14 @@ function Home() {
         </section>
 
         <section className="content-section">
+          <span className="eyebrow">Built to be reliable</span>
           <h2 className="section-title">Why use our downloader</h2>
           <div className="features-grid">
             {FEATURES.map((f) => (
               <div className="feature-card" key={f.title}>
-                <span className="feature-icon">{f.icon}</span>
+                <span className="feature-icon">
+                  <f.Icon />
+                </span>
                 <h3>{f.title}</h3>
                 <p>{f.detail}</p>
               </div>
@@ -404,6 +464,7 @@ function Home() {
         <AdSlot label="Advertisement" size="rectangle" />
 
         <section className="content-section">
+          <span className="eyebrow">Need help</span>
           <h2 className="section-title">Frequently asked questions</h2>
           <div className="faq-list">
             {FAQS.map((f, i) => (

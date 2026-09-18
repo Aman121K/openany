@@ -1,20 +1,46 @@
 import { Link } from "react-router-dom";
+import { IconFilm } from "./Icons";
 
 function SiteFooter() {
   return (
     <footer className="footer">
-      <div className="footer-links">
-        <Link to="/privacy-policy">Privacy Policy</Link>
-        <span className="footer-dot">·</span>
-        <Link to="/terms">Terms of Service</Link>
-        <span className="footer-dot">·</span>
-        <Link to="/">Home</Link>
+      <div className="footer-grid">
+        <div className="footer-col footer-brand-col">
+          <span className="brand footer-brand">
+            <span className="brand-mark">
+              <IconFilm />
+            </span>
+            Video Downloader
+          </span>
+          <p>
+            A free, fast tool to save videos from your favorite platforms — for personal use
+            only.
+          </p>
+        </div>
+
+        <div className="footer-col">
+          <h4>Navigate</h4>
+          <Link to="/">Home</Link>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/terms">Terms of Service</Link>
+        </div>
+
+        <div className="footer-col">
+          <h4>Supported platforms</h4>
+          <span>YouTube</span>
+          <span>Instagram</span>
+          <span>Facebook</span>
+          <span>TikTok · X</span>
+        </div>
       </div>
-      <p>
-        This tool is not affiliated with Facebook, Instagram, YouTube, TikTok, X, or Meta. For
-        personal use only — please respect copyright and each platform's terms of service.
-      </p>
-      <p className="footer-copy">© {new Date().getFullYear()} Video Downloader. All rights reserved.</p>
+
+      <div className="footer-bottom">
+        <p>
+          Not affiliated with Meta, Facebook, Instagram, YouTube, Google, TikTok, ByteDance, or
+          X Corp. Please respect copyright and each platform's terms of service.
+        </p>
+        <p className="footer-copy">© {new Date().getFullYear()} Video Downloader. All rights reserved.</p>
+      </div>
     </footer>
   );
 }

@@ -14,7 +14,7 @@
  * and load the AdSense script once in index.html:
  * <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
  */
-function AdSlot({ label = "Advertisement", size = "banner" }) {
+function AdSlot({ label = "Sponsored", size = "banner" }) {
   return (
     <div className={`ad-slot ad-slot-${size}`}>
       <span className="ad-slot-label">{label}</span>
