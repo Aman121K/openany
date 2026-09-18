@@ -13,10 +13,16 @@ function About() {
   return (
     <div className="page">
       <SiteHeader />
-      <main className="legal-container">
-        <h1>About Video Downloader</h1>
-        <p className="legal-updated">Built for people who just want their videos, fast.</p>
 
+      <header className="page-hero">
+        <div className="badge">
+          <span className="badge-dot" /> Our story
+        </div>
+        <h1>About Video Downloader</h1>
+        <p>Built for people who just want their videos, fast.</p>
+      </header>
+
+      <main className="legal-container">
         <p>
           Video Downloader started as a simple idea: saving a video you love from social media
           shouldn't require installing shady software or sitting through five redirect ads. We

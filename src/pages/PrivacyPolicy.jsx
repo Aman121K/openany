@@ -5,10 +5,16 @@ function PrivacyPolicy() {
   return (
     <div className="page">
       <SiteHeader />
-      <main className="legal-container">
-        <h1>Privacy Policy</h1>
-        <p className="legal-updated">Last updated: {new Date().toLocaleDateString()}</p>
 
+      <header className="page-hero">
+        <div className="badge">
+          <span className="badge-dot" /> Last updated: {new Date().toLocaleDateString()}
+        </div>
+        <h1>Privacy Policy</h1>
+        <p>How we handle your data — in plain language.</p>
+      </header>
+
+      <main className="legal-container">
         <p>
           This Privacy Policy explains how Video Downloader ("we", "our", "us") handles
           information when you use our website.

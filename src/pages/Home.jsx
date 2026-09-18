@@ -219,10 +219,11 @@ function Home() {
     setError("");
   }
 
-  function handleDownload(format_id, key) {
+  function handleDownload(format_id, key, directUrl) {
     setDownloadingId(key);
     const params = new URLSearchParams({ url: video.sourceUrl });
     if (format_id) params.set("format_id", format_id);
+    if (directUrl) params.set("media_url", directUrl);
     window.location.href = `${API_BASE}/api/download?${params.toString()}`;
     setTimeout(() => setDownloadingId(null), 2500);
   }
@@ -386,7 +387,7 @@ function Home() {
                     <button
                       key={key}
                       className="format-btn"
-                      onClick={() => handleDownload(f.format_id, key)}
+                      onClick={() => handleDownload(f.format_id, key, f.directUrl)}
                       disabled={isBusy}
                     >
                       <span className="format-icon">

@@ -5,10 +5,16 @@ function Terms() {
   return (
     <div className="page">
       <SiteHeader />
-      <main className="legal-container">
-        <h1>Terms of Service</h1>
-        <p className="legal-updated">Last updated: {new Date().toLocaleDateString()}</p>
 
+      <header className="page-hero">
+        <div className="badge">
+          <span className="badge-dot" /> Last updated: {new Date().toLocaleDateString()}
+        </div>
+        <h1>Terms of Service</h1>
+        <p>The rules for using Video Downloader.</p>
+      </header>
+
+      <main className="legal-container">
         <p>By using Video Downloader, you agree to the following terms.</p>
 
         <h2>1. Personal Use Only</h2>
