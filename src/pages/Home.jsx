@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import AdSlot from "../components/AdSlot";
+import { useAuth } from "../context/AuthContext";
 import {
   IconYouTube,
   IconInstagram,
@@ -110,6 +111,7 @@ const FAQS = [
 ];
 
 function Home() {
+  const { user, token } = useAuth();
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -121,8 +123,17 @@ function Home() {
   const [openFaq, setOpenFaq] = useState(null);
 
   useEffect(() => {
-    setHistory(loadHistory());
-  }, []);
+    if (user && token) {
+      fetch(`${API_BASE}/api/history`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((res) => (res.ok ? res.json() : { history: [] }))
+        .then((data) => setHistory(data.history || []))
+        .catch(() => setHistory([]));
+    } else {
+      setHistory(loadHistory());
+    }
+  }, [user, token]);
 
   useEffect(() => {
     if (!toast) return;
@@ -154,14 +165,29 @@ function Home() {
         setTab(
           data.formats?.some((f) => f.hasVideo) || !data.formats?.length ? "video" : "audio"
         );
-        setHistory(
-          saveToHistory({
-            sourceUrl: trimmed,
-            title: data.title,
-            thumbnail: data.thumbnail,
-            extractor: data.extractor,
+
+        const entry = {
+          sourceUrl: trimmed,
+          title: data.title,
+          thumbnail: data.thumbnail,
+          extractor: data.extractor,
+        };
+
+        if (user && token) {
+          fetch(`${API_BASE}/api/history`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ entry }),
           })
-        );
+            .then((res) => (res.ok ? res.json() : { history: [] }))
+            .then((d) => setHistory(d.history || []))
+            .catch(() => {});
+        } else {
+          setHistory(saveToHistory(entry));
+        }
       }
     } catch {
       setError("Could not reach the server. Is the backend running?");
@@ -207,7 +233,14 @@ function Home() {
   }
 
   function clearHistory() {
-    localStorage.removeItem(HISTORY_KEY);
+    if (user && token) {
+      fetch(`${API_BASE}/api/history`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      }).catch(() => {});
+    } else {
+      localStorage.removeItem(HISTORY_KEY);
+    }
     setHistory([]);
   }
 
@@ -396,7 +429,12 @@ function Home() {
         {!video && !loading && history.length > 0 && (
           <div className="history">
             <div className="history-head">
-              <h3>Recent links</h3>
+              <h3>
+                Recent links
+                <span className="history-scope">
+                  {user ? "· synced to your account" : "· saved on this device"}
+                </span>
+              </h3>
               <button type="button" className="link-btn" onClick={clearHistory}>
                 Clear
               </button>
