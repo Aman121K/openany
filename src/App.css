@@ -46,9 +46,65 @@ body {
   z-index: 1;
   background: linear-gradient(135deg, var(--blue), var(--blue-dark) 55%, var(--purple));
   color: white;
-  text-align: center;
-  padding: 56px 24px 84px;
   overflow: hidden;
+}
+
+.site-nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark) 55%, var(--purple));
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 10px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.hero-inner {
+  position: relative;
+  text-align: center;
+  padding: 24px 24px 84px;
 }
 
 .topbar::before,
@@ -614,6 +670,209 @@ body {
   text-transform: capitalize;
 }
 
+/* ---------- Ad slots ---------- */
+
+.ad-slot {
+  margin: 28px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(
+    45deg,
+    #f4f6f9,
+    #f4f6f9 10px,
+    #eef1f6 10px,
+    #eef1f6 20px
+  );
+  border: 1.5px dashed #cbd3dd;
+  border-radius: 12px;
+  color: #9aa1ab;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.ad-slot-banner {
+  width: 100%;
+  height: 90px;
+}
+
+.ad-slot-rectangle {
+  width: 100%;
+  max-width: 336px;
+  height: 200px;
+}
+
+/* ---------- Content sections (How it works / Features / FAQ) ---------- */
+
+.content-section {
+  margin-top: 44px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 24px;
+  letter-spacing: -0.3px;
+}
+
+.steps-grid,
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.features-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.step-card,
+.feature-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 16px;
+  text-align: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.step-card:hover,
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(20, 30, 60, 0.08);
+}
+
+.step-number {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted-soft);
+}
+
+.step-icon,
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e7f0ff, #eef1ff);
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.step-card h3,
+.feature-card h3 {
+  margin: 0 0 6px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.step-card p,
+.feature-card p {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.faq-item.open {
+  border-color: #cfe0fb;
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: none;
+  border: none;
+  padding: 15px 18px;
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-caret {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.faq-answer {
+  margin: 0;
+  padding: 0 18px 16px;
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ---------- Legal pages ---------- */
+
+.legal-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+.legal-container h1 {
+  font-size: 30px;
+  font-weight: 800;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+
+.legal-updated {
+  color: var(--muted-soft);
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+
+.legal-container h2 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 28px 0 8px;
+  color: var(--ink);
+}
+
+.legal-container p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #3c3e42;
+  margin: 0 0 6px;
+}
+
+.legal-container a {
+  color: var(--blue);
+}
+
 .footer {
   position: relative;
   z-index: 1;
@@ -622,6 +881,34 @@ body {
   color: var(--muted-soft);
   font-size: 12.5px;
   line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.footer-links a:hover {
+  color: var(--blue);
+}
+
+.footer-dot {
+  color: var(--border);
+}
+
+.footer-copy {
+  margin-top: 8px;
+  color: #b0b4ba;
 }
 
 .toast {
@@ -656,8 +943,8 @@ body {
 
 /* Tablet and small laptops */
 @media (max-width: 768px) {
-  .topbar {
-    padding: 48px 20px 72px;
+  .hero-inner {
+    padding: 24px 20px 72px;
   }
   .container {
     margin-top: -40px;
@@ -666,8 +953,20 @@ body {
 
 /* Large phones */
 @media (max-width: 600px) {
-  .topbar {
-    padding: 40px 18px 64px;
+  .site-nav {
+    padding: 14px 18px;
+  }
+  .brand {
+    font-size: 13.5px;
+  }
+  .nav-links {
+    gap: 12px;
+  }
+  .nav-links a {
+    font-size: 12.5px;
+  }
+  .hero-inner {
+    padding: 20px 18px 64px;
   }
   .badge {
     font-size: 11.5px;
@@ -751,5 +1050,45 @@ body {
   }
   .topbar h1 {
     font-size: 40px;
+  }
+}
+
+@media (max-width: 700px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .site-nav {
+    padding: 14px 16px;
+  }
+  .brand {
+    font-size: 13px;
+  }
+  .brand-mark {
+    width: 20px;
+    height: 20px;
+  }
+  .nav-links {
+    gap: 10px;
+  }
+  .nav-links a {
+    font-size: 12px;
+  }
+  .section-title {
+    font-size: 19px;
+  }
+  .legal-container {
+    padding: 32px 18px 48px;
+  }
+  .legal-container h1 {
+    font-size: 24px;
   }
 }
