@@ -19,14 +19,20 @@ function SiteFooter() {
         </div>
 
         <div className="footer-col">
-          <h4>Navigate</h4>
+          <h4>Company</h4>
           <Link to="/">Home</Link>
+          <Link to="/about">About Us</Link>
+          <Link to="/contact">Contact Us</Link>
+        </div>
+
+        <div className="footer-col">
+          <h4>Legal</h4>
           <Link to="/privacy-policy">Privacy Policy</Link>
           <Link to="/terms">Terms of Service</Link>
         </div>
 
         <div className="footer-col">
-          <h4>Supported platforms</h4>
+          <h4>Platforms</h4>
           <span>YouTube</span>
           <span>Instagram</span>
           <span>Facebook</span>
