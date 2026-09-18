@@ -3,7 +3,7 @@ import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import { IconClock, IconMail, IconShield, IconUser } from "../components/Icons";
 
-const API_BASE = "http://localhost:5050";
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
 
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
