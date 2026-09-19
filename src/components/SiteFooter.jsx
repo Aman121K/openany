@@ -22,6 +22,7 @@ function SiteFooter() {
           <h4>Company</h4>
           <Link to="/">Home</Link>
           <Link to="/about">About Us</Link>
+          <Link to="/blog">Blog</Link>
           <Link to="/contact">Contact Us</Link>
         </div>
 

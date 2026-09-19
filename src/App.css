@@ -1281,6 +1281,143 @@ body {
   color: var(--muted);
 }
 
+/* ---------- Blog ---------- */
+
+.blog-list-container {
+  max-width: 800px;
+  margin: -32px auto 0;
+  padding: 0 24px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.blog-card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: #dbe6fb;
+}
+
+.blog-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--muted-soft);
+  margin-bottom: 8px;
+}
+
+.blog-dot {
+  color: var(--border);
+}
+
+.blog-card h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.blog-card p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.blog-card-link {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.blog-post .blog-back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.blog-post .blog-back-link:hover {
+  color: var(--blue);
+}
+
+.blog-post h2 {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 32px 0 10px;
+  color: var(--ink);
+}
+
+.blog-post p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #3c3e42;
+  margin: 0 0 6px;
+}
+
+.blog-cta {
+  margin-top: 36px;
+  padding: 22px;
+  background: #f7f9fc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.blog-cta p {
+  margin: 0 0 10px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.blog-related {
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.blog-related h2 {
+  margin-top: 0;
+}
+
+.blog-related-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.blog-related-item {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.blog-related-item:hover {
+  text-decoration: underline;
+}
+
 /* ---------- Generic inner-page hero (About / Contact) ---------- */
 
 .page-hero {
