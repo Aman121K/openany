@@ -332,7 +332,8 @@ body {
 
 .input-wrap input {
   width: 100%;
-  padding: 14px 40px 14px 16px;
+  height: 48px;
+  padding: 0 40px 0 16px;
   border: 1.5px solid var(--border);
   border-radius: 11px;
   font-size: 15px;
@@ -341,6 +342,7 @@ body {
   color: var(--ink);
   background: #fff;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
 }
 
 .input-wrap input:focus {
@@ -390,6 +392,7 @@ body {
 }
 
 .paste-btn {
+  height: 48px;
   padding: 0 18px;
   border: 1.5px solid var(--border);
   border-radius: 11px;
@@ -402,7 +405,10 @@ body {
   white-space: nowrap;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
+  flex-shrink: 0;
+  box-sizing: border-box;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 
@@ -412,6 +418,7 @@ body {
 }
 
 .submit-btn {
+  height: 48px;
   padding: 0 26px;
   border: none;
   border-radius: 11px;
@@ -426,6 +433,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 7px;
+  flex-shrink: 0;
+  box-sizing: border-box;
   transition: transform 0.12s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
 
