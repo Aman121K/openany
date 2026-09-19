@@ -42,6 +42,9 @@ function Contact() {
       }
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "contact_form_submit");
+      }
     } catch {
       setErrorMsg("Could not reach the server. Please try again later.");
       setStatus("error");

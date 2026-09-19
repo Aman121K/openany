@@ -221,6 +221,12 @@ function Home() {
 
   function handleDownload(format_id, key, directUrl) {
     setDownloadingId(key);
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "download_click", {
+        platform: video?.extractor || "unknown",
+        format_id: format_id || "best",
+      });
+    }
     const params = new URLSearchParams({ url: video.sourceUrl });
     if (format_id) params.set("format_id", format_id);
     if (directUrl) params.set("media_url", directUrl);

@@ -6,9 +6,12 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
+import { useAnalytics } from "./hooks/useAnalytics";
 import "./App.css";
 
 function App() {
+  useAnalytics();
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />

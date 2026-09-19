@@ -66,6 +66,21 @@
     <meta name="apple-mobile-web-app-title" content="Video Downloader" />
     <meta name="mobile-web-app-capable" content="yes" />
 
+    <!--
+      Google Analytics (GA4)
+      Replace G-XXXXXXXXXX in BOTH lines below with your real Measurement ID
+      from analytics.google.com (Admin → Data Streams → your stream).
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXXXXX");
+    </script>
+
     <!-- Structured data for search engines -->
     <script type="application/ld+json">
       {
