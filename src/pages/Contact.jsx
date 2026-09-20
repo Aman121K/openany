@@ -2,6 +2,7 @@ import { useState } from "react";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import { IconClock, IconMail, IconShield, IconUser } from "../components/Icons";
+import { logEvent } from "../lib/firebase";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
 
@@ -42,9 +43,7 @@ function Contact() {
       }
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
-      if (typeof window.gtag === "function") {
-        window.gtag("event", "contact_form_submit");
-      }
+      logEvent("contact_form_submit");
     } catch {
       setErrorMsg("Could not reach the server. Please try again later.");
       setStatus("error");
