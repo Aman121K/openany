@@ -27,6 +27,12 @@ function SiteFooter() {
         </div>
 
         <div className="footer-col">
+          <h4>Tools</h4>
+          <Link to="/">Video Downloader</Link>
+          <Link to="/youtube-thumbnail-downloader">Thumbnail Downloader</Link>
+        </div>
+
+        <div className="footer-col">
           <h4>Legal</h4>
           <Link to="/privacy-policy">Privacy Policy</Link>
           <Link to="/terms">Terms of Service</Link>

@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import ThumbnailDownloader from "./pages/ThumbnailDownloader";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import { useAnalytics } from "./hooks/useAnalytics";
@@ -23,6 +24,7 @@ function App() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:slug" element={<BlogPost />} />
+      <Route path="/youtube-thumbnail-downloader" element={<ThumbnailDownloader />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<Terms />} />
     </Routes>
