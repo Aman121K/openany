@@ -256,8 +256,19 @@ function Home() {
   const activeFormats = tab === "video" ? videoFormats : audioFormats;
   const hasTabs = videoFormats.length > 0 && audioFormats.length > 0;
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
     <div className="page">
+      <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       <div className="bg-glow" aria-hidden="true" />
 
       <header className="topbar">
